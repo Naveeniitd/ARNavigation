@@ -18,7 +18,7 @@ public class Main
 
 public class routes
 {
-    public legs[] legs;
+    public Legs[] legs;
     public string weight_name;
     public float distance;
     public float duration;
@@ -27,9 +27,9 @@ public class routes
 }
 
 [System.Serializable]
-public class legs
+public class Legs
 {
-    public steps[] Steps;
+    public Steps[] steps;
     public float distance;
     public float duration;
     public string summary;
@@ -37,7 +37,7 @@ public class legs
 }
 
 [System.Serializable]
-public class steps
+public class Steps
 {
     public float weight;
     public float distance;

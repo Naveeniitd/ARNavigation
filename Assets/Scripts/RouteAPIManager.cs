@@ -11,16 +11,16 @@ public class RouteAPIManager : MonoBehaviour
     public InputField _dest_latitude;
     private string apiURL = "https://apis.mappls.com/advancedmaps/v1";
     private string apiKey = "17aa19c807d0281f350dcf93b0a3d1d4";
-    public Main data;
-    
+    public Main RouteData;
+    public List<Vector2> decodedPoints;
     public void GetDirection()
     {
         string startLat = "28.550816286228194";
         string startLon = "77.26878716302788";
         string endLat = _dest_latitude.text;
         string endLon = _dest_longitude.text;
-
-        string requestURL = $"{apiURL}/{apiKey}/route_adv/walking/{startLon},{startLat};{endLon},{endLat}";
+        
+        string requestURL = $"{apiURL}/{apiKey}/route_adv/walking/{startLon},{startLat};{endLon},{endLat}?steps=true&overview=full";
         Debug.Log(requestURL);
         StartCoroutine(SendRequest(requestURL));
     }
@@ -28,7 +28,8 @@ public class RouteAPIManager : MonoBehaviour
     private IEnumerator SendRequest(string url)
     {
         using (UnityWebRequest webRequest = UnityWebRequest.Get(url))
-        {
+        {   
+            webRequest.SetRequestHeader("accept", "application/json");
             yield return webRequest.SendWebRequest();
 
             if (webRequest.result != UnityWebRequest.Result.Success)
@@ -42,20 +43,21 @@ public class RouteAPIManager : MonoBehaviour
                 string jsonData = webRequest.downloadHandler.text;
                 Debug.Log(jsonData);
                 //parsing of json data
-                data = JsonUtility.FromJson<Main>(jsonData);
-                string encodedGeo = data.routes[0].geometry;
-                List<Vector2> decodedPoints = Decode(encodedGeo);
+                RouteData = JsonUtility.FromJson<Main>(jsonData);
+                string encodedGeo = RouteData.routes[0].geometry;
+                decodedPoints = Decode(encodedGeo);
                 Debug.Log(decodedPoints.Count);
                 for (int i = 0; i < decodedPoints.Count; i++)
                 {
                     Vector2 point = decodedPoints[i];
-                    Debug.Log(point.y);
-                    Debug.Log(point.x);
+                    string Latlong = $"Vector2: ({point.x:F5}, {point.y:F5})";
+                    Debug.Log(Latlong);
+                    
                 }
             }
         }
     }
-
+    //Decoding the geometery
     private  List<Vector2> Decode(string encoded)
     {
         List<Vector2> points = new List<Vector2>();
