@@ -1,0 +1,9 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/menu.uss?fileID=7433441132597879392&amp;guid=bf196846c4438f04e945ea55470fdc8d&amp;type=3#menu" />
+    <ui:VisualElement name="container" style="flex-grow: 1; justify-content: flex-start; align-items: auto; background-image: none; -unity-background-scale-mode: scale-and-crop;">
+        <ui:VisualElement name="Menu_center_panel" style="flex-wrap: nowrap; align-items: stretch; left: -2px; top: 4px; flex-grow: 1; width: 328px; justify-content: flex-end; right: auto; bottom: auto; background-image: url(&apos;project://database/Assets/UI/mapmyindia-og.png?fileID=2800000&amp;guid=9b1391013811c7d45b1358bc5d1870c6&amp;type=3#mapmyindia-og&apos;); flex-shrink: 1; flex-direction: row-reverse; transform-origin: center; display: flex; opacity: 1; overflow: visible; visibility: visible; position: absolute; height: 558px;">
+            <ui:Button text="ARView" display-tooltip-when-elided="true" name="ARView" class="button" style="top: 408px; left: 76px; width: 176px; height: 95px; font-size: 25px;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+    <ui:TextField picking-mode="Ignore" label="Search" value="Destination" text="filler text" is-delayed="true" name="Search" style="top: auto; right: -5px; bottom: 484px;" />
+</ui:UXML>
