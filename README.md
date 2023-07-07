@@ -19,6 +19,7 @@ For detailed instructions and documentation, refer to the following resources:
 - Mappls Pedestrian Route API documentation: [link to documentation](https://developer.mappls.com/mapping/routing-for-pedestrians)
 - Unity Documentation: [link to documentation](https://docs.unity3d.com/)
 
+![Alt text](/Screenshot(62).png)
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
